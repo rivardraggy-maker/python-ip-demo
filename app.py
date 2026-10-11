@@ -11,8 +11,13 @@ logging.basicConfig(
 
 @app.before_request
 def log_request():
-    # Log the address of the direct connection.
-    ip = request.remote_addr or "unknown"
+    # Render supplies the client address in this header.
+    # Only trust this when the app is deployed behind Render.
+    ip = request.headers.get("X-Forwarded-For", "").split(",")[0].strip()
+
+    if not ip:
+        ip = request.remote_addr or "unknown"
+
     logging.info(
         "Visitor request: ip=%s method=%s path=%s",
         ip,
