@@ -30,15 +30,34 @@ def home():
     return """
     <!doctype html>
     <html>
-      <head>
-        <title>My Website</title>
+    <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-      </head>
-      <body>
-        <h1>Welcome to My Website</h1>
-        <p>This website is online.</p>
-        <p>Connection logs are used for security and abuse prevention.</p>
-      </body>
+        <style>
+            html, body {
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+                background: black;
+            }
+            iframe {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                border: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <iframe
+            src="https://streamable.com/e/b555lx?quality=highest"
+            allow="autoplay; fullscreen"
+            allowfullscreen>
+        </iframe>
+    </body>
     </html>
     """
 
